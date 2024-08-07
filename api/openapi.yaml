@@ -5,14 +5,7 @@ info:
     \ for compatibility, but are no longer maintained."
   version: 5.6.3.14
 servers:
-- url: https://dev.jennifersoft.com?token={token}
-parameters:
-  - name: serverAddress
-    in: query
-    description: 서버 주소
-    required: true
-    schema:
-      type: string
+- url: https://dev.jennifersoft.com
 tags:
 - name: open-api-controller
   description: Open API Controller
