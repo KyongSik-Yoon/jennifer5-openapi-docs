@@ -13,10 +13,6 @@
       "headers": { "Location": "/docs" }
     },
     {
-      "src": "/docs(.*)",
-      "dest": "/index.js"
-    },
-    {
       "src": "/(.*)",
       "dest": "/docs/$1"
     }
