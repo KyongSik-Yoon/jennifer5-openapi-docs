@@ -17,6 +17,9 @@ const options = {
 const openApiDocumentPath = path.join(__dirname, './api/openapi.yaml');
 const openApiDocument = jsYaml.load(fs.readFileSync(openApiDocumentPath, 'utf8'));
 
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css"
+
+
 // Explicitly serve the favicon
 app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'favicon.ico'));
@@ -26,6 +29,7 @@ app.get('/favicon.ico', (req, res) => {
 app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocument, {
     customSiteTitle: 'Jennifer5 Open API',
     customCss: '.swagger-ui .topbar { display: none }',
+    customCssUrl: CSS_URL,
     customfavIcon: 'favicon.ico',
 }));
 
