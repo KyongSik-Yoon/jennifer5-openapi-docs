@@ -17,7 +17,7 @@ const options = {
 const openApiDocumentPath = path.join(__dirname, './api/openapi.yaml');
 const openApiDocument = jsYaml.load(fs.readFileSync(openApiDocumentPath, 'utf8'));
 
-const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css"
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.1/swagger-ui.min.css"
 
 
 // Explicitly serve the favicon
