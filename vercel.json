@@ -6,10 +6,15 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.js"
+      "src": "^/$",
+      "status": 308,
+      "headers": { "Location": "/docs", "Authorization": "QXH5TVMCmaq" }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
     }
   ]
 }

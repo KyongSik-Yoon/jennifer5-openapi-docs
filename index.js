@@ -27,7 +27,7 @@ app.get('/favicon.ico', (req, res) => {
   });
 
 // Serve Swagger UI with customization options
-app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocument, {
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument, {
     customSiteTitle: 'Jennifer5 Open API',
     customCss: '.swagger-ui .topbar { display: none }',
     customfavIcon: 'favicon.ico',
