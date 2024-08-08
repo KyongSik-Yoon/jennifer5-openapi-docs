@@ -8,11 +8,6 @@
   ],
   "routes": [
     {
-      "src": "^/$",
-      "status": 308,
-      "headers": { "Location": "/docs", "Authorization": "QXH5TVMCmaq" }
-    },
-    {
       "src": "/(.*)",
       "dest": "/index.js"
     }
