@@ -3221,7 +3221,7 @@ components:
   securitySchemes:
     bearerAuth:
       type: http
-      name: Open API token
+      description: Open API token
       scheme: bearer
       bearerFormat: JWT
   schemas:
