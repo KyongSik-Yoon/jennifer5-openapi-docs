@@ -1,5 +1,4 @@
 const express = require('express');
-const oas3Tools = require('oas3-tools');
 const swaggerUi = require('swagger-ui-express');
 const jsYaml = require('js-yaml');
 const fs = require('fs');
@@ -18,18 +17,15 @@ const options = {
 const openApiDocumentPath = path.join(__dirname, './api/openapi.yaml');
 const openApiDocument = jsYaml.load(fs.readFileSync(openApiDocumentPath, 'utf8'));
 
-// Initialize the OpenAPI middleware
-const expressAppConfig = oas3Tools.expressAppConfig(openApiDocumentPath, options);
-
 // Explicitly serve the favicon
 app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'favicon.ico'));
   });
 
 // Serve Swagger UI with customization options
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument, {
+app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocument, {
     customSiteTitle: 'Jennifer5 Open API',
-    // customCss: '.swagger-ui .topbar { display: none }',
+    customCss: '.swagger-ui .topbar { display: none }',
     customfavIcon: 'favicon.ico',
 }));
 
