@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: JENNIFER5 API Reference
-  description: "We are developing a API v2. Existing Open APIs are not removed for compatibility, but are no longer maintained."
+  description: "We are developing a API V2. Existing Open API and Rest API are not removed for compatibility, but are no longer maintained."
   version: 5.6.3.14
 servers:
 - url: https://dev.jennifersoft.com
