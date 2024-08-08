@@ -16,6 +16,6 @@
     "connect": "^3.2.0",
     "js-yaml": "^3.14.1",
     "oas3-tools": "^2.2.3",
-    "swagger-ui-express": "^4.6.3"
+    "swagger-ui-express": "^5.0.1"
   }
 }
