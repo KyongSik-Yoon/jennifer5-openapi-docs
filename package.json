@@ -4,8 +4,8 @@
   "description": "We are developing a new RESTful API. Existing Open APIs are not removed for compatibility, but are no longer maintained.",
   "main": "index.js",
   "scripts": {
-	"prestart": "npm install",
-	"start": "node index.js"
+    "prestart": "npm install",
+    "start": "node index.js"
   },
   "keywords": [
     "swagger"
@@ -14,7 +14,8 @@
   "private": true,
   "dependencies": {
     "connect": "^3.2.0",
-    "js-yaml": "^3.3.0",
-    "oas3-tools": "^2.2.3"
+    "js-yaml": "^3.14.1",
+    "oas3-tools": "^2.2.3",
+    "swagger-ui-express": "^5.0.1"
   }
 }

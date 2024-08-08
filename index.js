@@ -1,23 +1,40 @@
-'use strict';
+const express = require('express');
+const oas3Tools = require('oas3-tools');
+const swaggerUi = require('swagger-ui-express');
+const jsYaml = require('js-yaml');
+const fs = require('fs');
+const path = require('path');
 
-var path = require('path');
-var http = require('http');
+const app = express();
 
-var oas3Tools = require('oas3-tools');
-var serverPort = 8080;
-
-// swaggerRouter configuration
-var options = {
+// Define the options for the OpenAPI middleware
+const options = {
     routing: {
         controllers: path.join(__dirname, './controllers')
     },
 };
 
-var expressAppConfig = oas3Tools.expressAppConfig(path.join(__dirname, 'api/openapi.yaml'), options);
-var app = expressAppConfig.getApp();
+// Load the OpenAPI document
+const openApiDocumentPath = path.join(__dirname, './api/openapi.yaml');
+const openApiDocument = jsYaml.load(fs.readFileSync(openApiDocumentPath, 'utf8'));
 
-// Initialize the Swagger middleware
-http.createServer(app).listen(serverPort, function () {
-    console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-    console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
+// Initialize the OpenAPI middleware
+const expressAppConfig = oas3Tools.expressAppConfig(openApiDocumentPath, options);
+
+// Explicitly serve the favicon
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'favicon.ico'));
+  });
+
+// Serve Swagger UI with customization options
+app.use('/', swaggerUi.serve, swaggerUi.setup(openApiDocument, {
+    customSiteTitle: 'Jennifer5 Open API',
+    customCss: '.swagger-ui .topbar { display: none }',
+    customfavIcon: 'favicon.ico',
+}));
+
+// Start the server
+const port = 8080;
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
 });
