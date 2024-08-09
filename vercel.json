@@ -10,7 +10,7 @@
     {
       "src": "^/$",
       "status": 308,
-      "headers": { "Location": "/docs", "Authorization": "QXH5TVMCmaq" }
+      "headers": { "Location": "/docs" }
     },
     {
       "src": "/(.*)",
