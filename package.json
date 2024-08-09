@@ -14,8 +14,9 @@
   "private": true,
   "dependencies": {
     "connect": "^3.2.0",
+    "express-openapi-validator": "^5.3.1",
     "js-yaml": "^3.14.1",
-    "oas3-tools": "^2.2.3",
+    "swagger-routes-express": "^3.3.2",
     "swagger-ui-express": "^4.6.3"
   }
 }
