@@ -2,14 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "./index.js",
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/docs"
+      "src": "^/$",
+      "status": 308,
+      "headers": { "Location": "/docs", "Authorization": "QXH5TVMCmaq" }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
     }
   ]
 }
