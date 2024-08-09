@@ -6,15 +6,16 @@ info:
 servers:
 - url: https://dev.jennifersoft.com
 tags:
-- name: open-api-controller
+- name: open-api
   description: Open API Controller
-- name: rest-api-user-controller
+- name: rest-api
   description: Rest API User Controller
 paths:
   /api/activeService/list:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the data related to the list of real-time
         Active Services at the time of search.
       operationId: activeServiceListJSONUsingGET
@@ -62,7 +63,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the data related to the list of real-time
         Active Services at the time of search.
       operationId: activeServiceListJSONUsingPOST
@@ -114,7 +116,8 @@ paths:
   /api/auth/userlist:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: authUserList
       operationId: authUserListUsingGET
       responses:
@@ -137,7 +140,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: authUserList
       operationId: authUserListUsingPOST
       responses:
@@ -164,7 +168,8 @@ paths:
   /api/auth/userlist.xml:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: authUserListXml
       operationId: authUserListXmlUsingGET
       responses:
@@ -184,7 +189,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: authUserListXml
       operationId: authUserListXmlUsingPOST
       responses:
@@ -208,7 +214,8 @@ paths:
   /api/business:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: APIs to obtain information related to Business
       operationId: businessJSONUsingGET
       parameters:
@@ -241,7 +248,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: APIs to obtain information related to Business
       operationId: businessJSONUsingPOST
       parameters:
@@ -278,7 +286,8 @@ paths:
   /api/dbmetrics/business:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: "From among Domain/Instance/Business, APIs with which the user can\
         \ check the retrieval results by Business."
       operationId: dbMetricsBusinessJSONUsingGET
@@ -368,7 +377,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: "From among Domain/Instance/Business, APIs with which the user can\
         \ check the retrieval results by Business."
       operationId: dbMetricsBusinessJSONUsingPOST
@@ -462,7 +472,8 @@ paths:
   /api/dbmetrics/domain:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: APIs with which the user can check the retrieval results of Domain
         among.
       operationId: dbMetricsDomainJSONUsingGET
@@ -543,7 +554,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: APIs with which the user can check the retrieval results of Domain
         among.
       operationId: dbMetricsDomainJSONUsingPOST
@@ -628,7 +640,8 @@ paths:
   /api/dbmetrics/instance:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: "From among Domain/Instance/Business, APIs with which the user can\
         \ check the retrieval results by Instance."
       operationId: dbMetricsInstanceJSONUsingGET
@@ -718,7 +731,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: "From among Domain/Instance/Business, APIs with which the user can\
         \ check the retrieval results by Instance."
       operationId: dbMetricsInstanceJSONUsingPOST
@@ -812,7 +826,8 @@ paths:
   /api/dbsearch/error:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: "API to view the results of search on ERROR in DB Search (Only support\
         \ list, since 5.2.3 )"
       operationId: errorListJSONUsingGET
@@ -903,7 +918,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: "API to view the results of search on ERROR in DB Search (Only support\
         \ list, since 5.2.3 )"
       operationId: errorListJSONUsingPOST
@@ -998,7 +1014,8 @@ paths:
   /api/dbsearch/event:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to view the results of search on EVENT in DB Search
       operationId: eventListJSONUsingGET
       parameters:
@@ -1087,7 +1104,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to view the results of search on EVENT in DB Search
       operationId: eventListJSONUsingPOST
       parameters:
@@ -1180,7 +1198,8 @@ paths:
   /api/domain:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: APIs to obtain information related to Domain
       operationId: domainJSONUsingGET
       responses:
@@ -1203,7 +1222,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: APIs to obtain information related to Domain
       operationId: domainJSONUsingPOST
       responses:
@@ -1230,7 +1250,8 @@ paths:
   /api/domain.xml:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: domainXML
       operationId: domainXMLUsingGET
       responses:
@@ -1251,7 +1272,8 @@ paths:
   /api/instance:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: APIs to obtain information related to Instance
       operationId: instanceJSONUsingGET
       parameters:
@@ -1284,7 +1306,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: APIs to obtain information related to Instance
       operationId: instanceJSONUsingPOST
       parameters:
@@ -1321,7 +1344,8 @@ paths:
   /api/instance.xml:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: instanceXML
       operationId: instanceXMLUsingGET
       responses:
@@ -1342,7 +1366,8 @@ paths:
   /api/metrics:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the list of metrics available.
       operationId: metricsJSONUsingGET
       responses:
@@ -1365,7 +1390,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the list of metrics available.
       operationId: metricsJSONUsingPOST
       responses:
@@ -1392,7 +1418,8 @@ paths:
   /api/realtime/business:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the data related to real-time business
         at the time of search.
       operationId: realtimeBusinessUsingGET
@@ -1436,7 +1463,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the data related to real-time business
         at the time of search.
       operationId: realtimeBusinessUsingPOST
@@ -1484,7 +1512,8 @@ paths:
   /api/realtime/domain:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the data related to the real-time Domain
         at the time of search.
       operationId: realtimeDomainUsingGET
@@ -1519,7 +1548,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the data related to the real-time Domain
         at the time of search.
       operationId: realtimeDomainUsingPOST
@@ -1558,7 +1588,8 @@ paths:
   /api/realtime/domain.xml:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: realtimeDomainXML
       operationId: realtimeDomainXMLUsingGET
       responses:
@@ -1579,7 +1610,8 @@ paths:
   /api/realtime/instance:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the data related to real-time instance
         at the time of search.
       operationId: realtimeInstanceUsingGET
@@ -1623,7 +1655,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API which responds according to the data related to real-time instance
         at the time of search.
       operationId: realtimeInstanceUsingPOST
@@ -1671,7 +1704,8 @@ paths:
   /api/realtime/instance.xml:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: realtimeInstanceXML
       operationId: realtimeInstanceXMLUsingGET
       responses:
@@ -1692,7 +1726,8 @@ paths:
   /api/status/application:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to view the results of search on Application Servicein Application
         Status
       operationId: applicationStatusListJSONUsingGET
@@ -1802,7 +1837,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to view the results of search on Application Servicein Application
         Status
       operationId: applicationStatusListJSONUsingPOST
@@ -1916,7 +1952,8 @@ paths:
   /api/status/external_call:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to view the results of search on External Call in Application Status
       operationId: externalCallStatusListJSONUsingGET
       parameters:
@@ -2016,7 +2053,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to view the results of search on External Call in Application Status
       operationId: externalCallStatusListJSONUsingPOST
       parameters:
@@ -2120,7 +2158,8 @@ paths:
   /api/status/sql:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to view the results of search on SQL in Application Status
       operationId: sqlStatusListJSONUsingGET
       parameters:
@@ -2220,7 +2259,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to view the results of search on SQL in Application Status
       operationId: sqlStatusListJSONUsingPOST
       parameters:
@@ -2324,7 +2364,8 @@ paths:
   /api/transaction/guid:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to search X-View Basic Data using GUID.
       operationId: transactionGuidJSONUsingGET
       parameters:
@@ -2395,7 +2436,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to search X-View Basic Data using GUID.
       operationId: transactionGuidJSONUsingPOST
       parameters:
@@ -2470,7 +2512,8 @@ paths:
   /api/transaction/profile.txt:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API for querying the profile data of the transaction using txid.
       operationId: transactionProfilesTextUsingGET
       parameters:
@@ -2539,7 +2582,8 @@ paths:
   /api/transaction/sql:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: getPiSqlJSON
       operationId: getPiSqlJSONUsingGET
       parameters:
@@ -2616,7 +2660,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: getPiSqlJSON
       operationId: getPiSqlJSONUsingPOST
       parameters:
@@ -2697,7 +2742,8 @@ paths:
   /api/transaction/time:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to search the X-View Basic Data using time. Time is limited to
         1 minute.
       operationId: transactionTimeJSONUsingGET
@@ -2776,7 +2822,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to search the X-View Basic Data using time. Time is limited to
         1 minute.
       operationId: transactionTimeJSONUsingPOST
@@ -2859,7 +2906,8 @@ paths:
   /api/transaction/txid:
     get:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to search X-View Basic Data using txid.
       operationId: transactionTxidJSONUsingGET
       parameters:
@@ -2926,7 +2974,8 @@ paths:
       x-swagger-router-controller: OpenApiController
     post:
       tags:
-      - open-api-controller
+      - open-api
+
       summary: API to search X-View Basic Data using txid.
       operationId: transactionTxidJSONUsingPOST
       parameters:
@@ -2997,7 +3046,7 @@ paths:
   /restapi/user/:
     post:
       tags:
-      - rest-api-user-controller
+      - rest-api
       summary: Creating a JENNIFER User
       operationId: createUserUsingPOST
       requestBody:
@@ -3051,7 +3100,7 @@ paths:
   /restapi/user/{id}:
     get:
       tags:
-      - rest-api-user-controller
+      - rest-api
       summary: Getting a JENNIFER User
       operationId: getUserUsingGET
       parameters:
@@ -3083,7 +3132,7 @@ paths:
       x-swagger-router-controller: RestApiUserController
     put:
       tags:
-      - rest-api-user-controller
+      - rest-api
       summary: Modifying a JENNIFER User
       operationId: modifyUserUsingPUT
       parameters:
@@ -3144,7 +3193,7 @@ paths:
       x-swagger-router-controller: RestApiUserController
     delete:
       tags:
-      - rest-api-user-controller
+      - rest-api
       summary: Deleting a JENNIFER User
       operationId: deleteUserUsingDELETE
       parameters:
@@ -3191,7 +3240,7 @@ paths:
   /restapi/users:
     get:
       tags:
-      - rest-api-user-controller
+      - rest-api
       summary: Getting a JENNIFER Users
       operationId: getUsersUsingGET
       responses:

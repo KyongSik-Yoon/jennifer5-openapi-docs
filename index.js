@@ -3,9 +3,10 @@ const swaggerUi = require('swagger-ui-express');
 const jsYaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
-const app = express();
 const OpenApiValidator = require('express-openapi-validator');
 const { connector, summarise } = require('swagger-routes-express');
+
+const app = express();
 
 // jennifer favicon
 app.get('/docs/favicon.ico', (req, res) => {
@@ -17,14 +18,46 @@ app.get('/docs/swagger-ui.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'swagger-ui.css'));
 });
 
-// Load the OpenAPI document
-const openApiPath = path.join(__dirname, 'api', 'openapi.yaml');
-const apiDefinition = jsYaml.load(fs.readFileSync(openApiPath, 'utf8'));
-const apiSummary = summarise(apiDefinition);
+// 여러 개의 OpenAPI YAML 파일 로드 및 병합
+const openApiDir = path.join(__dirname, 'api');
+let apiFiles = fs.readdirSync(openApiDir).filter(file => file.endsWith('.yaml'));
+// api-v2.yaml 파일이 먼저 나오도록 순서 조정
+apiFiles = apiFiles.sort((a, b) => {
+    if (a === 'api-v2.yaml') return -1;
+    if (b === 'api-v2.yaml') return 1;
+    return 0;
+});
+
+let combinedApiDefinition = {
+    openapi: '3.0.1',
+    info: {
+        title: 'Jennifer5 Open API',
+        version: '5.6.3.14',
+    },
+    paths: {},
+    servers: [],
+    security: [],
+    components: {
+        schemas: {},
+        securitySchemes: {},
+    },
+};
+
+apiFiles.forEach(file => {
+    const apiDefinition = jsYaml.load(fs.readFileSync(path.join(openApiDir, file), 'utf8'));
+    combinedApiDefinition.servers = [...combinedApiDefinition.servers, ...apiDefinition.servers];
+    combinedApiDefinition.security = [...combinedApiDefinition.security, ...apiDefinition.security]
+    combinedApiDefinition.paths = { ...combinedApiDefinition.paths, ...apiDefinition.paths };
+    combinedApiDefinition.components.schemas = { ...combinedApiDefinition.components.schemas, ...apiDefinition.components?.schemas };
+    combinedApiDefinition.components.securitySchemes = { ...combinedApiDefinition.components.securitySchemes, ...apiDefinition.components?.securitySchemes };
+    combinedApiDefinition.servers = [...combinedApiDefinition.servers, ...apiDefinition.servers];
+});
+
+const apiSummary = summarise(combinedApiDefinition);
 console.info(apiSummary);
 
 // Serve Swagger UI with customization options
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(apiDefinition, {
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(combinedApiDefinition, {
     customSiteTitle: 'Jennifer5 Open API',
     // 과거 버전의 swagger css 에 맞지 않는 부분 일부를 수정해서 사용함
     customCss: '.swagger-ui .topbar { display: none } .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }',
@@ -34,12 +67,12 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(apiDefinition, {
 // setup API validator
 const validatorOptions = {
     coerceTypes: true,
-    apiSpec: openApiPath,
+    apiSpec: combinedApiDefinition,
     validateRequests: true,
     validateResponses: true
 };
 
-app.use(OpenApiValidator.middleware(validatorOptions))
+app.use(OpenApiValidator.middleware(validatorOptions));
 
 // error customization, if request is invalid
 app.use((err, req, res, next) => {
@@ -60,12 +93,14 @@ fs.readdirSync(controllersDir).forEach(file => {
         const controller = require(path.join(controllersDir, file));
         Object.assign(api, controller);
     }
-});const connect = connector(api, apiDefinition, {
+});
+
+const connect = connector(api, combinedApiDefinition, {
     onCreateRoute: (method, descriptor) => {
         const paddedMethod = method.padStart(6, ' ');
         console.log(`${paddedMethod.toUpperCase()}: ${descriptor[0]} : ${(descriptor[1]).name}`)
     }
-})
+});
 
 connect(app);
 

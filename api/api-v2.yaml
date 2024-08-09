@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  title: Jennifer5 Open API V2
+  version: 5.6.3.14
+  description: A simple API to manage users.
+servers:
+- url: https://dev.jennifersoft.com
+tags:
+- name: open-api-v2 
+  description: Jennifer Open API V2
+security:
+  - bearerAuth: []
+paths:
+  /api-v2/test-response/json:
+    get:
+      tags:
+      - open-api-v2
+      summary: json 응답 테스트
+      operationId: testResponseJson
+      responses:
+        '200':
+          description: json 응답 테스트
+          content:
+            application/json:
+              schema:
+               type: array
+               items:
+                  $ref: '#/components/schemas/TestResponseJson'
+              
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      description: Open API token
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    TestResponseJson:
+      type: object
