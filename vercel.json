@@ -6,17 +6,10 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    {
-      "src": "^/$",
-      "status": 308,
-      "headers": { "Location": "/docs" }
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/"
+      "destination": "/docs"
     }
   ]
 }
