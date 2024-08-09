@@ -37,3 +37,25 @@ components:
   schemas:
     TestResponseJson:
       type: object
+      properties:
+        message:
+          type: string
+          example: "한글 안녕?"
+        request:
+          type: object
+          properties:
+            subPath:
+              type: array
+              items:
+                type: string
+              example: ["test-response", "json"]
+            query:
+              type: object
+              additionalProperties: {}
+              example: {}
+            authorizedUser:
+              type: boolean
+              example: true
+      required:
+        - message
+        - request
