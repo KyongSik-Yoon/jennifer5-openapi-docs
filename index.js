@@ -8,18 +8,18 @@ const OpenApiValidator = require('express-openapi-validator');
 const { connector, summarise } = require('swagger-routes-express');
 
 // jennifer favicon
-app.get('/favicon.ico', (req, res) => {
+app.get('/docs/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'favicon.ico'));
 });
 
 // swagger 를 vercel 에 배포할 때 cdn 관련 이슈가 있는듯. 예전 버전의 css 를 셀프 호스팅 한다. (현재 기준 swagger-ui 4.6.2)
-app.get('/swagger-ui.css', (req, res) => {
+app.get('/docs/swagger-ui.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'swagger-ui.css'));
 });
 
 // Load the OpenAPI document
-const yamlSpecFile = './api/openapi.yaml';
-const apiDefinition = jsYaml.load(fs.readFileSync(yamlSpecFile, 'utf8'));
+const openApiPath = path.join(__dirname, 'api', 'openapi.yaml');
+const apiDefinition = jsYaml.load(fs.readFileSync(openApiPath, 'utf8'));
 const apiSummary = summarise(apiDefinition);
 console.info(apiSummary);
 
@@ -34,7 +34,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(apiDefinition, {
 // setup API validator
 const validatorOptions = {
     coerceTypes: true,
-    apiSpec: yamlSpecFile,
+    apiSpec: openApiPath,
     validateRequests: true,
     validateResponses: true
 };
